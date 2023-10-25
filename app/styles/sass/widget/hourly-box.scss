@@ -12,7 +12,7 @@
 	&__title {
 		font-size: 32px;
 		font-weight: 700;
-		margin-bottom: 20px;
+		margin-bottom: 70px;
 	}
 
 	&__row {
@@ -33,6 +33,8 @@
 	}
 
 	&__wind {
+		display: block;
+		margin-top: 10px;
 		font-size: 20px;
 	}
 
@@ -44,8 +46,40 @@
 
 	&__arrow-icon {
 		width: 55px;
-		height: 55px;
-		margin: 0 auto;
-		background: url('../../../images/src/nav-wind-icon.png') no-repeat center center;
+		height: 90px;
+		margin: 15px auto;
+		background: url('../../../images/src/nav-wind-icon.png') no-repeat bottom;
+	}
+}
+
+@media (max-width: 1400px) {
+	.hourly-box {
+		width: 50%;
+		padding: 15px 10px;
+
+		&__column {
+			padding: 13px 15px 18px;
+		}
+
+		&__row {
+			flex-direction: column;
+		}
+
+		&__arrow-icon {
+			margin: 0;
+		}
+
+		&__column {
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			margin-right: 0;
+			margin-bottom: 10px;
+		}
+
+		&__title {
+			margin-top: 15px;
+			margin-bottom: 30px;
+		}
 	}
 }

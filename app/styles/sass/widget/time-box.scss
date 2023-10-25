@@ -25,3 +25,21 @@
 		font-weight: 400;
 	}
 }
+
+@media (max-width: 1400px) {
+	.time-box {
+		&__time {
+			display: block;
+			margin-top: 45px;
+			font-size: 70px;
+		}
+		&__day {
+			display: block;
+			margin-top: 45px;
+		}
+
+		&__city-name {
+			margin-top: 50px;
+		}
+	}
+}

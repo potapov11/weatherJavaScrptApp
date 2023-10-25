@@ -68,6 +68,9 @@
 	}
 
 	&__icon {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		text-align: center;
 		font-size: 26px;
 		font-weight: 600;
@@ -112,5 +115,37 @@
 
 	&__pressure-icon {
 		background: url('../../../images/src/pressure.png') no-repeat;
+	}
+}
+
+@media (max-width: 1400px) {
+	.info-box {
+		width: 40%;
+
+		&__pressure {
+			margin-top: 20px;
+			margin-left: 0;
+		}
+
+		&__img {
+			width: 120px;
+			height: 120px;
+		}
+
+		&__column {
+			&:nth-child(2) {
+				margin-right: 30px;
+			}
+		}
+
+		&__temp-text {
+			font-size: 66px;
+		}
+
+		&__sunrise,
+		&__sunset {
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 }
