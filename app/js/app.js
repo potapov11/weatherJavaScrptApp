@@ -5,7 +5,44 @@ const locationBtnText = document.querySelector('.header__location-text');
 // https://openweathermap.org/img/wn/10d@2x.png
 //openweathermap.org/img/wn/03n@2x.png
 
-https: locationBtn.addEventListener('click', () => {
+clockTimer();
+
+function clockTimer() {
+	var date = new Date();
+
+	var time = [date.getHours(), date.getMinutes(), date.getSeconds()]; // |[0] = Hours| |[1] = Minutes| |[2] = Seconds|
+	var dayOfWeek = [
+		'Воскесенье',
+		'Понедельник',
+		'Вторник',
+		'Среда',
+		'Четверг',
+		'Пятница',
+		'Суббота',
+	];
+	var days = date.getDay();
+
+	if (time[0] < 10) {
+		time[0] = '0' + time[0];
+	}
+	if (time[1] < 10) {
+		time[1] = '0' + time[1];
+	}
+	if (time[2] < 10) {
+		time[2] = '0' + time[2];
+	}
+
+	var current_time = [time[0], time[1], time[2]].join(':');
+	var clock = document.getElementById('clock');
+	var day = document.getElementById('dayOfWeek');
+
+	clock.innerHTML = current_time;
+	day.innerHTML = dayOfWeek[days];
+
+	setTimeout(clockTimer, 1000);
+}
+
+locationBtn.addEventListener('click', () => {
 	navigator.geolocation.getCurrentPosition(success, error, {
 		enableHighAccuracy: true,
 	});
@@ -16,7 +53,6 @@ https: locationBtn.addEventListener('click', () => {
 		if (position !== null) {
 			console.log('succes');
 		}
-		console.log(position);
 		getWeather(position);
 		getCurrentWeather(position);
 	}
@@ -31,6 +67,7 @@ async function getWeather(params) {
 	);
 	const respData = await response.json();
 	console.log(respData);
+	setDatato5DayForecast(respData);
 }
 
 async function getCurrentWeather(params) {
@@ -38,12 +75,54 @@ async function getCurrentWeather(params) {
 		`https://api.openweathermap.org/data/2.5/weather?lat=${params[0]}&lon=${params[1]}&lang=ru&appid=${API_KEY}&units=metric`,
 	);
 	const respData = await response.json();
-	console.log(respData);
+	// console.log(respData);
 	setDatatoTimeBox(respData);
 	setDatatoInfoBox(respData);
 }
 
-// function extractData(data) {}
+function setDatato5DayForecast(data) {
+	let weatherArr = data.list.map((item, i) => {
+		if (i % 5 === 0) {
+			return item;
+		}
+	});
+	weatherArr = weatherArr.filter((element) => element !== undefined);
+	console.log(weatherArr);
+
+	// const {
+	// 	dt,
+	// 	main: { temp },
+	// 	weather: [{ main, icon }],
+	// } = weatherArr[0];
+
+	let forecastLines = Array.from(document.querySelectorAll('.forecast-box__line'));
+	console.log(forecastLines);
+	for (let i = 0; i < forecastLines.length; i++) {
+		const {
+			dt,
+			main: { temp },
+			weather: [{ main, icon }],
+		} = weatherArr[i];
+		console.log(dt);
+		console.log(temp);
+		console.log(main);
+
+		console.log(icon);
+		// console.log(forecastLines[i]);
+		// console.dir(forecastLines[i]);
+
+		let spanTemp = forecastLines[i].querySelector('span');
+		spanTemp.textContent = `${Math.ceil(temp)} °C`;
+
+		let iconDiv = forecastLines[i].querySelector('div');
+		iconDiv.style.backgroundImage = `url(https://openweathermap.org/img/wn/${icon}@2x.png)`;
+
+		let timeText = forecastLines[i].querySelector('p');
+		let currentDate = getDayTime(dt);
+		currentDate = currentDate.split(',');
+		timeText.textContent = currentDate;
+	}
+}
 
 function setDatatoInfoBox(data) {
 	const tempBox = document.querySelector('.info-box__temp-text');
@@ -73,17 +152,12 @@ function setDatatoInfoBox(data) {
 
 	let timeSun = getSunRiseSunsetTime(timeSunrise);
 	let timeSunSet = getSunRiseSunsetTime(timeSunset);
-	console.log(timeSun, timeSunSet);
 	// Создаем новый объект Date с использованием временной метки
 
-	console.log(data.weather);
 	const [{ description, main, icon }] = data.weather;
 	const { speed } = data.wind;
 	const currentSpeedWind = Math.ceil(Number(speed));
 	const { humidity, pressure } = data.main;
-	console.log(humidity, pressure);
-
-	console.log(main, description, icon, currentSpeedWind);
 
 	weatherImg.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
 
@@ -142,5 +216,48 @@ function setDatatoTimeBox(data) {
 	timeBoxDay.textContent = `${daysArray[currentDay]}, ${day} ${monthArray[month]}`;
 	cityNameBox.textContent = cityName;
 }
+
+function getDayTime(timeUtc) {
+	const daysArray = [
+		'Воскресенье',
+		'Понедельник',
+		'Вторник',
+		'Среда',
+		'Четверг',
+		'Пятница',
+		'Суббота',
+	];
+
+	const monthArray = [
+		'Декабря',
+		'Января',
+		'Февраля',
+		'Марта',
+		'Апреля',
+		'Мая',
+		'Июня',
+		'Июля',
+		'Августа',
+		'Сентября',
+		'Октября',
+		'Ноября',
+	];
+
+	//Устанавливаем часы
+	const timestamp = timeUtc; // Ваша временная метка
+	const date = new Date(timestamp * 1000);
+	const hours = date.getHours();
+	const minutes = date.getMinutes();
+	const day = date.getDate();
+	const currentDay = date.getDay();
+	const month = date.getMonth() + 1; // Метод getMonth() возвращает значение от 0 до 11, поэтому мы добавляем 1
+	const formattedHours = hours.toString().padStart(2, '0');
+	const formattedMinutes = minutes.toString().padStart(2, '0');
+
+	console.log(day, monthArray[month], daysArray[currentDay]);
+	return `${day} ${monthArray[month]}`;
+}
+
+getDayTime(1698235200);
 
 // const timestamp = 1698157556; // Ваша временная метка

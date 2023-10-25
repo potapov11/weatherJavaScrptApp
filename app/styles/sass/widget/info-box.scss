@@ -8,6 +8,7 @@
 	border-radius: 30px;
 	background: #444;
 	box-shadow: 12px 13px 8px 0px rgba(34, 60, 80, 0.2);
+	text-shadow: none;
 
 	&__temp-text {
 		font-size: 80px;
@@ -46,6 +47,7 @@
 	&__column {
 		width: 30%;
 		margin-right: 45px;
+		text-align: center;
 		&:nth-child(3) {
 			margin-right: 0;
 		}
@@ -67,7 +69,7 @@
 
 	&__icon {
 		text-align: center;
-		font-size: 32px;
+		font-size: 26px;
 		font-weight: 600;
 	}
 
@@ -88,6 +90,7 @@
 	&__wind-icon,
 	&__humidity-icon,
 	&__pressure-icon {
+		margin: 0 auto;
 		margin-bottom: 8px;
 		width: 60px;
 		height: 60px;
