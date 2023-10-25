@@ -2,10 +2,14 @@ let preprocessor = 'sass', // Preprocessor (sass, less, styl); 'sass' also work 
 	fileswatch = 'html,htm,txt,json,md,woff2'; // List of files extensions for watching & hard reload
 
 import pkg from 'gulp';
-const { gulp, src, dest, parallel, series, watch } = pkg;
-//
+const { gulp, src, dest, parallel, series, watch, ghPages } = pkg;
 
-//
+// const path = require('path');
+
+// function deploy(cb) {
+// 	return gulp.src('./dist/**/*').pipe(ghPages());
+// }
+// exports.deploy = deploy;
 
 import browserSync from 'browser-sync';
 import bssi from 'browsersync-ssi';

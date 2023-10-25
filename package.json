@@ -5,9 +5,13 @@
 	"main": "index.js",
 	"author": "WebDesign Master",
 	"type": "module",
-	"browserslist": [ "last 10 versions" ],
+	"browserslist": [
+		"last 10 versions"
+	],
 	"license": "ISC",
-	"scripts": { "start": "gulp" },
+	"scripts": {
+		"start": "gulp"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.19.6",
 		"@babel/preset-env": "^7.19.4",
@@ -20,6 +24,7 @@
 		"browsersync-ssi": "^0.2.4",
 		"cssnano": "^5.1.14",
 		"del": "^7.0.0",
+		"gh-pages": "^6.0.0",
 		"gulp": "^4.0.2",
 		"gulp-changed": "^4.0.3",
 		"gulp-concat": "^2.6.1",
@@ -33,6 +38,7 @@
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-stylus": "^2.7.1",
 		"postcss": "^8.4.18",
+		"push-dir": "^0.4.1",
 		"sass": "^1.55.0",
 		"terser-webpack-plugin": "^5.3.6",
 		"webpack": "^5.74.0",
