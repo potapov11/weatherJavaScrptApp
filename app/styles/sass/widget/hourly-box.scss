@@ -1,0 +1,51 @@
+@import 'util.scss';
+
+.hourly-box {
+	@include box-style;
+	width: 64%;
+	margin-top: 50px;
+	padding: 15px 80px;
+	font-style: normal;
+	font-weight: 700;
+	text-align: center;
+
+	&__title {
+		font-size: 32px;
+		font-weight: 700;
+		margin-bottom: 20px;
+	}
+
+	&__row {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__column {
+		margin-right: 15px;
+		padding: 13px 25px 18px;
+		border-radius: 40px;
+		background: #373636;
+	}
+
+	&__time,
+	&__temp {
+		font-size: 24px;
+	}
+
+	&__wind {
+		font-size: 20px;
+	}
+
+	&__icon {
+		width: 80px;
+		height: 80px;
+		background: url('../../../images/src/rain-icon.png') no-repeat center;
+	}
+
+	&__arrow-icon {
+		width: 55px;
+		height: 55px;
+		margin: 0 auto;
+		background: url('../../../images/src/nav-wind-icon.png') no-repeat center center;
+	}
+}

@@ -1,0 +1,113 @@
+.info-box {
+	display: flex;
+	width: 55%;
+	padding: 25px;
+	margin-left: 55px;
+	font-style: normal;
+	line-height: normal;
+	border-radius: 30px;
+	background: #444;
+	box-shadow: 12px 13px 8px 0px rgba(34, 60, 80, 0.2);
+
+	&__temp-text {
+		font-size: 80px;
+		font-weight: 700;
+		background: linear-gradient(84deg, #fff -16.56%, rgba(255, 255, 255, 0) 118.43%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	&__temp-subtext {
+		color: rgba(255, 255, 255, 0.8);
+		font-size: 20px;
+		font-weight: 600;
+
+		span {
+			font-size: 32px;
+		}
+	}
+
+	&__sunrise,
+	&__sunset {
+		font-size: 20px;
+		font-weight: 600;
+		margin-bottom: 20px;
+		display: flex;
+		span {
+			display: block;
+		}
+	}
+	&__sunrise-time,
+	&__sunset-time {
+		font-size: 16px;
+	}
+
+	&__column {
+		width: 30%;
+		margin-right: 45px;
+		&:nth-child(3) {
+			margin-right: 0;
+		}
+	}
+
+	&__sunrise-icon {
+		width: 48px;
+		height: 48px;
+		background: url('../../../images/src/sunrise-icon.png') no-repeat;
+		margin-right: 10px;
+	}
+
+	&__sunset-icon {
+		width: 48px;
+		height: 48px;
+		background: url('../../../images/src/sunset-icon.png') no-repeat;
+		margin-right: 10px;
+	}
+
+	&__icon {
+		text-align: center;
+		font-size: 32px;
+		font-weight: 600;
+	}
+
+	&__img {
+		display: block;
+		margin-bottom: 12px;
+		width: 200px;
+		height: 200px;
+	}
+
+	&__add-info {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-top: 25px;
+	}
+
+	&__wind-icon,
+	&__humidity-icon,
+	&__pressure-icon {
+		margin-bottom: 8px;
+		width: 60px;
+		height: 60px;
+	}
+
+	&__pressure {
+		margin-top: 20px;
+		margin-left: 33%;
+	}
+
+	//icons
+	&__wind-icon {
+		background: url('../../../images/src/wind.png') no-repeat;
+	}
+
+	&__humidity-icon {
+		background: url('../../../images/src/humidity.png') no-repeat;
+	}
+
+	&__pressure-icon {
+		background: url('../../../images/src/pressure.png') no-repeat;
+	}
+}

@@ -1,0 +1,59 @@
+.body {
+	font-family: 'Poppins-Medium', sans-serif;
+	background: -webkit-linear-gradient(
+		90deg,
+		#797272,
+		#785959,
+		#211312
+	); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(
+		90deg,
+		#797272,
+		#785959,
+		#211312
+	); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background-size: cover;
+	background-position: center;
+	color: #fff;
+	text-shadow: #fff 1px 0 2px;
+}
+
+@font-face {
+	font-family: 'Poppins-Medium';
+	src: url('../../../fonts/Poppins-Medium.woff2'), format('woff2');
+	font-display: swap;
+}
+// @font-face {
+// 	font-family: 'Font Name';
+// 	src: local('Font Name'), url(/fonts/font.ttf);
+// }
+
+.container {
+	margin: 0 auto;
+	margin-top: 60px;
+	margin-bottom: 50px;
+	max-width: 1350px;
+}
+
+.main {
+	margin-top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+@mixin reset-list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+@mixin flexible {
+	display: flex;
+	align-items: center;
+}
+
+@mixin box-style {
+	border-radius: 30px;
+	background-color: #444444;
+	box-shadow: 12px 13px 8px 0px rgba(34, 60, 80, 0.2);
+}
