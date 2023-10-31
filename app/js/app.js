@@ -1,11 +1,47 @@
-// const locationBtnText = document.querySelector('.header__location-text');
 const API_KEY = 'f4058b408f207656f8e588ad47f3e07b';
 const locationBtn = document.querySelector('.header__location');
 const locationBtnText = document.querySelector('.header__location-text');
-// https://openweathermap.org/img/wn/10d@2x.png
-//openweathermap.org/img/wn/03n@2x.png
 
 clockTimer();
+searchPlace();
+
+function searchPlace() {
+	const btnSearch = document.querySelector('.header__form-search');
+	btnSearch.addEventListener('click', getPlace);
+}
+
+async function getPlace() {
+	const input = document.querySelector('.header__input');
+	if (input.value === '') {
+		console.log('выберите место');
+	} else {
+		const value = input.value;
+		console.log(value);
+		const urlToGetPlace = `http://api.openweathermap.org/geo/1.0/direct?q=${value}&lang=ru&appid=${API_KEY}`;
+		const placeData = await getPlaceData(urlToGetPlace);
+		console.log(placeData);
+		placeData.forEach((item) => {
+			useLatLon(item.lat, item.lon, item.local_names.ru);
+		});
+	}
+}
+
+function useLatLon(lat, lon, name) {
+	console.log(lat, lon, name);
+	const position = [lat, lon];
+	getCurrentWeather(position);
+	getWeather(position);
+}
+
+async function getPlaceData(url) {
+	const response = await fetch(url);
+	if (response.ok) {
+		const respData = await response.json();
+		return respData;
+	} else {
+		throw new Error('Ошибка при получении данных');
+	}
+}
 
 function clockTimer() {
 	var date = new Date();
@@ -89,12 +125,6 @@ function setDatato5DayForecast(data) {
 	weatherArr = weatherArr.filter((element) => element !== undefined);
 	console.log(weatherArr);
 
-	// const {
-	// 	dt,
-	// 	main: { temp },
-	// 	weather: [{ main, icon }],
-	// } = weatherArr[0];
-
 	let forecastLines = Array.from(document.querySelectorAll('.forecast-box__line'));
 	console.log(forecastLines);
 	for (let i = 0; i < forecastLines.length; i++) {
@@ -108,8 +138,6 @@ function setDatato5DayForecast(data) {
 		console.log(main);
 
 		console.log(icon);
-		// console.log(forecastLines[i]);
-		// console.dir(forecastLines[i]);
 
 		let spanTemp = forecastLines[i].querySelector('span');
 		spanTemp.textContent = `${Math.ceil(temp)} °C`;
