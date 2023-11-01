@@ -66,3 +66,17 @@
 	background-color: #444444;
 	box-shadow: 12px 13px 8px 0px rgba(34, 60, 80, 0.2);
 }
+
+.overflow {
+	overflow: hidden;
+}
+
+.hide {
+	display: none;
+}
+
+@media (max-width: 1035px) {
+	.main {
+		flex-direction: column;
+	}
+}

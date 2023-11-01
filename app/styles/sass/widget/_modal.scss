@@ -1,0 +1,28 @@
+.modal-dialog {
+	// background-color: #359d9d;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	backdrop-filter: blur(5px);
+}
+.modal-content {
+	height: auto;
+	border-radius: 0;
+	background: url('../../../images/src/loader-gif.gif') no-repeat;
+	height: 63px;
+	width: 64px;
+	border-radius: 50%;
+}
+
+.modal-close {
+	position: absolute;
+	top: 65px;
+	right: 66px;
+}

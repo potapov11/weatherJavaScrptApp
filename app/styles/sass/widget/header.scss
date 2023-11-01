@@ -42,10 +42,11 @@
 	}
 
 	&__form-search {
-		width: 45px;
+		width: 70px;
 		height: 45px;
 		margin-right: 30px;
 		background: url('../../../images/src/search-icon.png') no-repeat;
+		cursor: pointer;
 	}
 
 	&__input {
@@ -53,9 +54,13 @@
 		height: 30px;
 		background: transparent;
 		border: none;
+		color: aliceblue;
+		font-size: 24px;
 
 		&::placeholder {
 			color: #fff;
+			font-size: 20px;
+
 			opacity: 0.6;
 		}
 	}
@@ -73,7 +78,7 @@
 	}
 
 	&__location-icon {
-		width: 35px;
+		width: 50px;
 		height: 35px;
 		background: url('../../../images/src/location-icon.png') no-repeat;
 		margin-right: 10px;
@@ -83,5 +88,17 @@
 @media (max-width: 1400px) {
 	.header {
 		width: 83%;
+	}
+}
+
+@media (max-width: 1035px) {
+	.header {
+		flex-direction: column;
+		align-items: baseline;
+
+		&__form {
+			width: 292px;
+			margin: 10px 0;
+		}
 	}
 }

@@ -149,3 +149,16 @@
 		}
 	}
 }
+
+@media (max-width: 1035px) {
+	.info-box {
+		width: 100%;
+		margin-left: 0;
+		margin-bottom: 20px;
+
+		&__sunrise-sunset {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+}

@@ -28,6 +28,8 @@
 
 @media (max-width: 1400px) {
 	.time-box {
+		padding: 50px 20px;
+
 		&__time {
 			display: block;
 			margin-top: 45px;
@@ -41,5 +43,12 @@
 		&__city-name {
 			margin-top: 50px;
 		}
+	}
+}
+
+@media (max-width: 1035px) {
+	.time-box {
+		width: 100%;
+		margin-bottom: 20px;
 	}
 }
